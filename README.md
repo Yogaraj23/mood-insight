@@ -8,57 +8,53 @@
 
 **Live Repo:** https://github.com/Yogaraj23/mood-insight
 
-### ✨ What This App Does
-
-- **Login with Username OR Email** - Custom Firestore lookup (not just Firebase Auth)
+## ✨ What This App Does
+- **Login with Username OR Email** - Custom Firestore lookup
 - **6 Mood Types** - Happy 😊, Calm 😌, Excited 🤩, Sad 😔, Anxious 😰, Angry 😠
-- **Points System** - Auto calculates points: `Energy*20 - Stress*12 - Sleep factor`
-- **6 Main Screens** - Onboarding, Dashboard, Add Mood (Wheel Picker), Reports (Daily/Weekly), Insights (Prediction), History
-- **Admin Panel** - Admin can see all users and filter reports by user
-- **Gamification** - Points preview, Success popup with earned points
+- **Points System** - Based on energy, stress and sleep quality (max 100 per log)
+- **6 Main Screens** - Onboarding, Dashboard, Add Mood, Reports, Insights, History
+- **Admin Panel** - See all users + filter reports
+- **Gamification** - Points preview + Success popup
 
-### 📱 App Flow
+## 📱 App Flow
+```text
+Splash -> Onboarding -> Login (Username/Email) -> Dashboard
+-> Add Mood (6 Chips + 3 Wheel Pickers + Trigger + Note)
+-> Save -> Success Popup (X pts Earned)
+-> Reports | Insights | History | Profile | Admin
+```
 
-### 🛠️ Built With
-
+## 🛠️ Built With
 - Flutter 3.x, Dart
-- Firebase Auth, Cloud Firestore, Firebase Core
-- google_fonts (Poppins), intl (DateFormat), timezone (Asia/Kolkata), flutter_local_notifications
+- Firebase Auth, Cloud Firestore
+- google_fonts, intl, timezone, flutter_local_notifications
 
-### 🔥 Key Code Highlight
-
+## 🔥 Key Code Highlight
 **Points Logic:**
 ```dart
 int calculatePoints(int energy, int stress, double sleep) {
   int score = energy * 20 - (stress - 1) * 12 - (sleep - 8).abs().round() * 6;
-  return score.clamp(0, 100);
+  return score.clamp(0, 100).toInt();
 }
-Onboarding -> Login (Username/Email separate) -> Dashboard (Total Logs, Points)
--> Add Reflection (Mood Chips + 3 Wheel Pickers + Trigger + Note)
--> Save -> Success Popup (X pts Earned) -> Reports / Insights / History
- ```
+```
 
-### 📂 Firestore DB
+## 📂 Firestore DB
+- `users/{uid}` : uid, email, username, name, role, totalPoints, totalLogs, createdAt
+- `moods/{autoId}` : userId, mood, moodEmoji, energy, stress, sleep, points, note, trigger, timestamp, date
 
-**users/{uid}** : uid, email, username, name, createdAt
-**moods/{autoId}** : userId, mood, moodEmoji, energy, stress, sleep, points, note, trigger, timestamp, date
-
-### 🚀 Run Locally
+## 🚀 Run Locally
 ```bash
 git clone https://github.com/Yogaraj23/mood-insight.git
+cd mood-insight
 flutter pub get
 flutter run
 ```
-
 Add your `google-services.json` in `android/app/`
 
-### 👨‍💻 Developer
-
+## 👨‍💻 Developer
 **YOGARAJ J** | B.Tech IT - KCE (7.83 CGPA)
 Flutter Developer | Chennai | Open to Work
-GitHub: @Yogaraj23
+GitHub: [@Yogaraj23](https://github.com/Yogaraj23)
 
 ---
 ⭐ Star this repo if you like it!
-
-
