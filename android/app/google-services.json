@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "917749285256",
+    "project_id": "moodinsight-cc8de",
+    "storage_bucket": "moodinsight-cc8de.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917749285256:android:9161828249017242017a3d",
+        "android_client_info": {
+          "package_name": "com.example.mood_insight"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMg7PvY4QmHTEjm-6UB7fB93yOSbU887U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
